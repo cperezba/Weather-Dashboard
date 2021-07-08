@@ -25,18 +25,14 @@
     <!-- Left Column: Search Bar -->
     <div class="row">
         <div class="col-lg-3" id="left-side">
-            <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
-                     <button type="button" class="btn btn-primary">
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="searchBar" aria-describedby="emailHelp"
+                        placeholder="Enter City">
                 </div>
-               
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
+                <button type="submit" class="btn btn-primary" id="searchBtn">Submit</button>
+            </form>
         </div>
-
 
         <!-- Right Column: Selected City -->
         <div class="col-lg-9" id="right-side">
@@ -120,6 +116,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
