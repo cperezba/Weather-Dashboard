@@ -12,7 +12,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body>\
+<body>
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid p-3 mb-2 bg-primary text-white">
         <div class="container ">
@@ -26,6 +26,7 @@
     <div class="row">
         <div class="col-lg-3" id="left-side">
             <form>
+                <h3>Search for a City:</h3>
                 <div class="form-group">
                     <input type="email" class="form-control" id="searchBar" aria-describedby="emailHelp"
                         placeholder="Enter City">
@@ -38,7 +39,7 @@
         <div class="col-lg-9" id="right-side">
             <div class=row>
                 <div class="card w-100" style="width: 18rem; height: 300px;">
-                    <div class="card-body">
+                    <div class="card-body one">
                         <h5 class="card-title" id="city-name"></h5>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text" id="temp"></p>
@@ -51,63 +52,67 @@
 
 
             <!-- Right Column: Five Day Forecast-->
-            <div class=row>
+            <div class="row d-flex justify-content-between">
                 <h2>Five Day Forecast</h2>
 
                 <!-- Card #1 -->
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
+                <div class="card text-white bg-primary mb-3 col-12 col-lg-2" style="max-width: 18rem;">
+                    <div class="card-header" id="day-one-date">Date</div>
                     <div class="card-body">
-                        <h5 class="card-title">Symbol</h5>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humility</p>
+                        <h5 class="card-title" id="day-one-symbol">Symbol</h5>
+                        <p class="card-text" id="day-one-temp">Temp</p>
+                        <p class="card-text" id="day-one-wind">Wind</p>
+                        <p class="card-text" id="day-one-humidity">Humility</p>
                     </div>
                 </div>
 
                 <!-- Card #2 -->
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
+                <div class="card text-white bg-primary mb-3 col-12 col-lg-2" style="max-width: 18rem;">
+                    <div class="card-header" id="day-two-date">Date</div>
                     <div class="card-body">
-                        <h5 class="card-title">Symbol</h5>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humility</p>
+                        <h5 class="card-title" id="day-two-symbol">Symbol</h5>
+                        <p class="card-text" id="day-two-temp">Temp</p>
+                        <p class="card-text" id="day-two-wind">Wind</p>
+                        <p class="card-text" id="day-two-humidity">Humility</p>
                     </div>
                 </div>
+
 
                 <!-- Card #3 -->
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
+                <div class="card text-white bg-primary mb-3 col-12 col-lg-2" style="max-width: 18rem;">
+                    <div class="card-header" id="day-three-date">Date</div>
                     <div class="card-body">
-                        <h5 class="card-title">Symbol</h5>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humility</p>
+                        <h5 class="card-title" id="day-three-symbol">Symbol</h5>
+                        <p class="card-text" id="day-three-temp">Temp</p>
+                        <p class="card-text" id="day-three-wind">Wind</p>
+                        <p class="card-text" id="day-three-humidity">Humility</p>
                     </div>
                 </div>
+
 
                 <!-- Card #4 -->
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
+                <div class="card text-white bg-primary mb-3 col-12 col-lg-2" style="max-width: 18rem;">
+                    <div class="card-header" id="day-four-date">Date</div>
                     <div class="card-body">
-                        <h5 class="card-title">Symbol</h5>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humility</p>
+                        <h5 class="card-title" id="day-four-symbol">Symbol</h5>
+                        <p class="card-text" id="day-four-temp">Temp</p>
+                        <p class="card-text" id="day-four-wind">Wind</p>
+                        <p class="card-text" id="day-four-humidity">Humility</p>
                     </div>
                 </div>
 
+
                 <!-- Card #5 -->
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
+                <div class="card text-white bg-primary mb-3 col-12 col-lg-2" style="max-width: 18rem;">
+                    <div class="card-header" id="day-five-date">Date</div>
                     <div class="card-body">
-                        <h5 class="card-title">Symbol</h5>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humility</p>
+                        <h5 class="card-title" id="day-five-symbol">Symbol</h5>
+                        <p class="card-text" id="day-five-temp">Temp</p>
+                        <p class="card-text" id="day-five-wind">Wind</p>
+                        <p class="card-text" id="day-five-humidity">Humility</p>
                     </div>
                 </div>
+
 
             </div>
         </div>
