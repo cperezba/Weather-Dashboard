@@ -9,7 +9,6 @@ currentWind = document.getElementById('wind')
 currentHumidity = document.getElementById('humidity')
 currentUVIndex = document.getElementById('uv-index')
 
-
 var dayOneTemp = document.getElementById('day-one-temp');
 var dayTwoTemp = document.getElementById('day-two-temp');
 var dayThreeTemp = document.getElementById('day-three-temp');
@@ -52,20 +51,18 @@ function apiWeatherData(searchedCity) {
             cityName.innerHTML = chosenCity;
 
             var chosenCityTemp = data.main.temp;
-            currentTemp.innerHTML = chosenCityTemp;
+            currentTemp.innerHTML = `Temp: ${chosenCityTemp} F`;
 
             var chosenCityWind = data.wind.speed;
-            currentWind.innerHTML = chosenCityWind;
+            currentWind.innerHTML = `Wind: ${chosenCityWind} MPH`;
 
             var chosenCityHumidity = data.main.humidity;
             currentHumidity.innerHTML = `Humidy: ${chosenCityHumidity} %`;
 
 
-            var lat = data.coord.lat;
-            console.log(lat);
-            var lon = data.coord.lon;
-            console.log(lon);
 
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
 
             var completeURLFiveDayForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=37e98eb8e58cfe49e4e0561295e9fd4d`;
             console.log(completeURLFiveDayForecast);
@@ -75,6 +72,10 @@ function apiWeatherData(searchedCity) {
                 })
                 .then(function (data) {
                     console.log(data);
+
+                    //Current Day UVI (CANNOT BE OBTAINED THROUGH CURRENT DAY API)
+                    var chosenCityUVIndex = data.daily[0].uvi;
+                    currentUVIndex.innerHTML = `UV Index: ${chosenCityUVIndex}`;
 
 
                     //Day 1 Forecast
@@ -134,6 +135,5 @@ function apiWeatherData(searchedCity) {
 
         })
 };
-
 
 
