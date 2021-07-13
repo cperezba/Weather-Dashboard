@@ -1,13 +1,26 @@
+//Global Variables
+
 var searchBar = document.getElementById('searchBar');
 var searchBtn = document.getElementById('searchBtn');
 var cityContainer = document.querySelector('.one');
-
 
 cityName = document.getElementById('city-name')
 currentTemp = document.getElementById('temp')
 currentWind = document.getElementById('wind')
 currentHumidity = document.getElementById('humidity')
 currentUVIndex = document.getElementById('uv-index')
+
+var dayOneDate = document.getElementById('day-one-date');
+var dayTwoDate = document.getElementById('day-two-date');
+var dayThreeDate = document.getElementById('day-three-date');
+var dayFourDate = document.getElementById('day-four-date');
+var dayFiveDate = document.getElementById('day-five-date');
+
+var dayOneSymbol = document.getElementById('day-one-symbol')
+var dayTwoSymbol = document.getElementById('day-two-symbol')
+var dayThreeSymbol = document.getElementById('day-three-symbol')
+var dayFourSymbol = document.getElementById('day-four-symbol')
+var dayFiveSymbol = document.getElementById('day-five-symbol')
 
 var dayOneTemp = document.getElementById('day-one-temp');
 var dayTwoTemp = document.getElementById('day-two-temp');
@@ -29,9 +42,44 @@ var dayFiveHumidity = document.getElementById('day-five-humidity');
 
 
 
+
+
+
+
+var historyCities = localStorage.getItem("list") || [];
+
+var searchHistoryPlaceholder = document.getElementById('search-history');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 searchBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var searchedCity = searchBar.value;
+
+    for (i = 0; i <= historyCities.length; i++) {
+        var searchedCityHistory = searchBar.value;
+        console.log(searchedCityHistory);
+        let element = document.createElement("button");
+        element.setAttribute('class', 'btn btn-secondary w-100');
+        element.style.marginTop = "10px";
+        element.textContent = searchedCityHistory;
+        searchHistoryPlaceholder.appendChild(element);
+    }
+
+
+
     console.log(searchedCity);
     apiWeatherData(searchedCity);
 })
@@ -47,18 +95,33 @@ function apiWeatherData(searchedCity) {
         .then(function (data) {
             console.log(data);
 
-            var chosenCity = data.name;
-            cityName.innerHTML = chosenCity;
 
+            //City Name, Current Time, and Weather Icon
+            var chosenCity = data.name;
+            var rawChosenCityDate = data.dt;
+            var trueChosenCityDate = rawChosenCityDate * 1000;
+            var finalChosenCityDate = new Date(trueChosenCityDate).toLocaleDateString("en-US");
+            var weatherIconID = data.weather[0].icon;
+            var weatherIconURL = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`;
+            
+            
+            
+            cityName.innerHTML = `${chosenCity} --- ${finalChosenCityDate} --- <img src=${weatherIconURL}>`;
+
+            //Current City Time
             var chosenCityTemp = data.main.temp;
             currentTemp.innerHTML = `Temp: ${chosenCityTemp} F`;
 
+            //Current Wind Speed
             var chosenCityWind = data.wind.speed;
             currentWind.innerHTML = `Wind: ${chosenCityWind} MPH`;
 
+            //Current Humidity
             var chosenCityHumidity = data.main.humidity;
             currentHumidity.innerHTML = `Humidy: ${chosenCityHumidity} %`;
 
+            // historyCities.unshift(chosenCity);
+            localStorage.setItem("Search History", searchedCity);
 
 
             var lat = data.coord.lat;
@@ -79,6 +142,16 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 1 Forecast
+                    var rawChosenOneDate = data.daily[1].dt;
+                    var trueChosenOneDate = rawChosenOneDate * 1000;
+                    var finalChosenOneDate = new Date(trueChosenOneDate).toLocaleDateString("en-US");
+                    dayOneDate.innerHTML = `${finalChosenOneDate}`;
+
+                    var chosenOneIcon = data.daily[1].weather[0].icon;
+                    var chosenOneIconURL = `http://openweathermap.org/img/wn/${chosenOneIcon}@2x.png`;
+                    dayOneSymbol.innerHTML = `<img src=${chosenOneIconURL}>`
+                    console.log(chosenOneIconURL);
+
                     var chosenOneTemp = data.daily[1].temp.day;
                     dayOneTemp.innerHTML = `${chosenOneTemp} F`;
 
@@ -90,6 +163,16 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 2 Forecast
+                    var rawChosenTwoDate = data.daily[2].dt;
+                    var trueChosenTwoDate = rawChosenTwoDate * 1000;
+                    var finalChosenTwoDate = new Date(trueChosenTwoDate).toLocaleDateString("en-US");
+                    dayTwoDate.innerHTML = `${finalChosenTwoDate}`;
+
+                    var chosenTwoIcon = data.daily[2].weather[0].icon;
+                    var chosenTwoIconURL = `http://openweathermap.org/img/wn/${chosenTwoIcon}@2x.png`;
+                    dayTwoSymbol.innerHTML = `<img src=${chosenTwoIconURL}>`
+                    console.log(chosenOneIconURL);
+
                     var chosenTwoTemp = data.daily[2].temp.day;
                     dayTwoTemp.innerHTML = `${chosenTwoTemp} F`;
 
@@ -101,6 +184,16 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 3 Forecast
+                    var rawChosenThreeDate = data.daily[3].dt;
+                    var trueChosenThreeDate = rawChosenThreeDate * 1000;
+                    var finalChosenThreeDate = new Date(trueChosenThreeDate).toLocaleDateString("en-US");
+                    dayThreeDate.innerHTML = `${finalChosenThreeDate}`;
+
+                    var chosenThreeIcon = data.daily[3].weather[0].icon;
+                    var chosenThreeIconURL = `http://openweathermap.org/img/wn/${chosenThreeIcon}@2x.png`;
+                    dayThreeSymbol.innerHTML = `<img src=${chosenThreeIconURL}>`
+                    console.log(chosenOneIconURL);
+
                     var chosenThreeTemp = data.daily[3].temp.day;
                     dayThreeTemp.innerHTML = `${chosenThreeTemp} F`;
 
@@ -112,6 +205,16 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 4 Forecast
+                    var rawChosenFourDate = data.daily[4].dt;
+                    var trueChosenFourDate = rawChosenFourDate * 1000;
+                    var finalChosenFourDate = new Date(trueChosenFourDate).toLocaleDateString("en-US");
+                    dayFourDate.innerHTML = `${finalChosenFourDate}`;
+
+                    var chosenFourIcon = data.daily[4].weather[0].icon;
+                    var chosenFourIconURL = `http://openweathermap.org/img/wn/${chosenFourIcon}@2x.png`;
+                    dayFourSymbol.innerHTML = `<img src=${chosenFourIconURL}>`
+                    console.log(chosenOneIconURL);
+
                     var chosenFourTemp = data.daily[4].temp.day;
                     dayFourTemp.innerHTML = `${chosenFourTemp} F`;
 
@@ -123,6 +226,16 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 5 Forecast
+                    var rawChosenFiveDate = data.daily[5].dt;
+                    var trueChosenFiveDate = rawChosenFiveDate * 1000;
+                    var finalChosenFiveDate = new Date(trueChosenFiveDate).toLocaleDateString("en-US");
+                    dayFiveDate.innerHTML = `${finalChosenFiveDate}`;
+
+                    var chosenFiveIcon = data.daily[5].weather[0].icon;
+                    var chosenFiveIconURL = `http://openweathermap.org/img/wn/${chosenFiveIcon}@2x.png`;
+                    dayFiveSymbol.innerHTML = `<img src=${chosenFiveIconURL}>`
+                    console.log(chosenFiveIconURL);
+
                     var chosenFiveTemp = data.daily[5].temp.day;
                     dayFiveTemp.innerHTML = `${chosenFiveTemp} F`;
 
