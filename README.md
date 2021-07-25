@@ -38,7 +38,7 @@ No installation required! For access to the fully functioning webpage applicatio
 
 Simply enter a city name to obtain current weather data and a five day forecast! Previous searches are saved and kept in a history query below the search bar for user reference.
 
-![Weather Dashboard UI Image](assets\images\weather-dashboard-main.PNG)
+![Weather Dashboard UI Image](assets/images/weather-dashboard-main.PNG)
 
 
 <br/>
