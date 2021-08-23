@@ -42,21 +42,57 @@ var dayFiveHumidity = document.getElementById('day-five-humidity');
 
 
 
-
-
-
-
-var historyCities = localStorage.getItem("list") || [];
-
 var searchHistoryPlaceholder = document.getElementById('search-history');
 
 
+var historyCities = JSON.parse(localStorage.getItem("Search-History")) || [];
+
+
+function init() {
+    historyCities.forEach(city => {
+        let element = document.createElement("button");
+        element.setAttribute('class', 'btn btn-secondary w-100');
+        element.style.marginTop = "10px";
+        element.value = city
+        element.addEventListener("click", function (event) {
+            apiWeatherData(event.target.value);
+        });
+        element.textContent = city;
+        searchHistoryPlaceholder.appendChild(element);
+    });
+};
 
 
 
 
 
 
+function renderButton() {
+    if (!searchBar.value) {
+        return;
+    } else {
+    var searchedCityHistory = searchBar.value;
+    console.log(searchedCityHistory);
+    let element = document.createElement("button");
+    element.setAttribute('class', 'btn btn-secondary w-100');
+    element.style.marginTop = "10px";
+    element.value = searchBar.value;
+    element.addEventListener("click", function (event) {
+        apiWeatherData(event.target.value);
+    });
+    element.textContent = searchedCityHistory;
+    searchHistoryPlaceholder.appendChild(element);
+    if (historyCities.length >= 5) {
+        historyCities.shift();
+        historyCities.push(searchBar.value);
+        searchHistoryPlaceholder.textContent = '';
+        init();
+    } else {
+        historyCities.push(searchBar.value);
+    }
+    localStorage.setItem("Search-History", JSON.stringify(historyCities));
+};
+};
 
 
 
@@ -68,15 +104,16 @@ searchBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var searchedCity = searchBar.value;
 
-    for (i = 0; i <= historyCities.length; i++) {
-        var searchedCityHistory = searchBar.value;
-        console.log(searchedCityHistory);
-        let element = document.createElement("button");
-        element.setAttribute('class', 'btn btn-secondary w-100');
-        element.style.marginTop = "10px";
-        element.textContent = searchedCityHistory;
-        searchHistoryPlaceholder.appendChild(element);
-    }
+    // for (i = 0; i <= historyCities.length; i++) {
+    //     var searchedCityHistory = searchBar.value;
+    //     console.log(searchedCityHistory);
+    //     let element = document.createElement("button");
+    //     element.setAttribute('class', 'btn btn-secondary w-100');
+    //     element.style.marginTop = "10px";
+    //     element.textContent = searchedCityHistory;
+    //     searchHistoryPlaceholder.appendChild(element);
+    // }
+    renderButton();
 
 
 
@@ -103,9 +140,9 @@ function apiWeatherData(searchedCity) {
             var finalChosenCityDate = new Date(trueChosenCityDate).toLocaleDateString("en-US");
             var weatherIconID = data.weather[0].icon;
             var weatherIconURL = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`;
-            
-            
-            
+
+
+
             cityName.innerHTML = `${chosenCity} --- ${finalChosenCityDate} --- <img src=${weatherIconURL}>`;
 
             //Current City Time
@@ -250,3 +287,5 @@ function apiWeatherData(searchedCity) {
 };
 
 
+
+init();
