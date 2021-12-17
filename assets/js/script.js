@@ -126,25 +126,32 @@ function apiWeatherData(searchedCity) {
             cityName.innerHTML = `${chosenCity} --- ${finalChosenCityDate} --- <img src=${weatherIconURL}>`;
 
             //Current City Time
-            let chosenCityTemp = data.main.temp;
-            currentTemp.innerHTML = `Temp: ${chosenCityTemp} F`;
+            currentTemp.innerHTML = `Temp: ${data.main.temp} F`;
 
             //Current Wind Speed
-            let chosenCityWind = data.wind.speed;
-            currentWind.innerHTML = `Wind: ${chosenCityWind} MPH`;
+            currentWind.innerHTML = `Wind: ${data.wind.speed} MPH`;
 
             //Current Humidity
-            let chosenCityHumidity = data.main.humidity;
-            currentHumidity.innerHTML = `Humidy: ${chosenCityHumidity} %`;
+            currentHumidity.innerHTML = `Humidity: ${data.main.humidity} %`;
 
             // historyCities.unshift(chosenCity);
             localStorage.setItem("Search History", searchedCity);
 
 
-            let lat = data.coord.lat;
-            let lon = data.coord.lon;
 
-            let completeURLFiveDayForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=37e98eb8e58cfe49e4e0561295e9fd4d`;
+
+
+
+
+
+
+
+            // let lat = data.coord.lat;
+            // let lon = data.coord.lon;
+
+
+
+            let completeURLFiveDayForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=37e98eb8e58cfe49e4e0561295e9fd4d`;
             console.log(completeURLFiveDayForecast);
             fetch(completeURLFiveDayForecast)
                 .then(function (response) {
@@ -158,93 +165,12 @@ function apiWeatherData(searchedCity) {
                     currentUVIndex.innerHTML = `UV Index: ${chosenCityUVIndex}`;
 
 
-                    //Day 1 Forecast
-                    let finalChosenOneDate = new Date((data.daily[1].dt * 1000)).toLocaleDateString("en-US");
-                    dateOne.innerHTML = `${finalChosenOneDate}`;
-
-                    let chosenOneIcon = data.daily[1].weather[0].icon;
-                    let chosenOneIconURL = `http://openweathermap.org/img/wn/${chosenOneIcon}@2x.png`;
-                    symbolOne.innerHTML = `<img src=${chosenOneIconURL}>`
-                    console.log(chosenOneIconURL);
-
-                    let chosenOneTemp = data.daily[1].temp.day;
-                    tempOne.innerHTML = `${chosenOneTemp} F`;
-
-                    let chosenOneWind = data.daily[1].wind_speed;
-                    windOne.innerHTML = `${chosenOneWind} mph`;
-
-                    let chosenOneHumidity = data.daily[1].humidity;
-                    humidityOne.innerHTML = `${chosenOneHumidity} %`
-
-
-                    //Day 2 Forecast
-                    let finalChosenTwoDate = new Date((data.daily[2].dt * 1000)).toLocaleDateString("en-US");
-                    dateTwo.innerHTML = `${finalChosenTwoDate}`;
-
-                    let chosenTwoIcon = data.daily[2].weather[0].icon;
-                    let chosenTwoIconURL = `http://openweathermap.org/img/wn/${chosenTwoIcon}@2x.png`;
-                    symbolTwo.innerHTML = `<img src=${chosenTwoIconURL}>`
-                    console.log(chosenOneIconURL);
-
-                    let chosenTwoTemp = data.daily[2].temp.day;
-                    tempTwo.innerHTML = `${chosenTwoTemp} F`;
-
-                    let chosenTwoWind = data.daily[2].wind_speed;
-                    windTwo.innerHTML = `${chosenTwoWind} mph`;
-
-                    let chosenTwoHumidity = data.daily[2].humidity;
-                    humidityTwo.innerHTML = `${chosenTwoHumidity} %`
-
-
-                    //Day 3 Forecast
-                    let finalChosenThreeDate = new Date((data.daily[3].dt * 1000)).toLocaleDateString("en-US");
-                    dateThree.innerHTML = `${finalChosenThreeDate}`;
-
-                    let chosenThreeIcon = data.daily[3].weather[0].icon;
-                    let chosenThreeIconURL = `http://openweathermap.org/img/wn/${chosenThreeIcon}@2x.png`;
-                    symbolThree.innerHTML = `<img src=${chosenThreeIconURL}>`
-                    console.log(chosenOneIconURL);
-
-                    let chosenThreeTemp = data.daily[3].temp.day;
-                    tempThree.innerHTML = `${chosenThreeTemp} F`;
-
-                    let chosenThreeWind = data.daily[3].wind_speed;
-                    windThree.innerHTML = `${chosenThreeWind} mph`;
-
-                    let chosenThreeHumidity = data.daily[3].humidity;
-                    humidityThree.innerHTML = `${chosenThreeHumidity} %`
-
-
-                    //Day 4 Forecast
-                   
-                    let finalChosenFourDate = new Date((data.daily[4].dt * 1000)).toLocaleDateString("en-US");
-                    dateFour.innerHTML = `${finalChosenFourDate}`;
-
-                    let chosenFourIcon = data.daily[4].weather[0].icon;
-                    let chosenFourIconURL = `http://openweathermap.org/img/wn/${chosenFourIcon}@2x.png`;
-                    symbolFour.innerHTML = `<img src=${chosenFourIconURL}>`
-                    console.log(chosenOneIconURL);
-
-                    let chosenFourTemp = data.daily[4].temp.day;
-                    tempFour.innerHTML = `${chosenFourTemp} F`;
-
-                    let chosenFourWind = data.daily[4].wind_speed;
-                    windFour.innerHTML = `${chosenFourWind} mph`;
-
-                    let chosenFourHumidity = data.daily[4].humidity;
-                    humidityFour.innerHTML = `${chosenFourHumidity} %`
-
-
-                    //Day 5 Forecast
-                    dateFive.innerHTML = `${new Date((data.daily[5].dt * 1000)).toLocaleDateString("en-US")}`;
-
-                    symbolFive.innerHTML = `<img src=http://openweathermap.org/img/wn/${data.daily[5].weather[0].icon}@2x.png>`
-
-                    tempFive.innerHTML = `${data.daily[5].temp.day} F`;
-
-                    windFive.innerHTML = `${data.daily[5].wind_speed} mph`;
-
-                    humidityFive.innerHTML = `${data.daily[5].humidity} %`;
+                 
+                    weatherForecast(data, 1, dateOne, symbolOne, tempOne, windOne, humidityOne);
+                    weatherForecast(data, 2, dateTwo, symbolTwo, tempTwo, windTwo, humidityTwo);
+                    weatherForecast(data, 3, dateThree, symbolThree, tempThree, windThree, humidityThree);
+                    weatherForecast(data, 4, dateFour, symbolFour, tempFour, windFour, humidityFour);
+                    weatherForecast(data, 5, dateFive, symbolFive, tempFive, windFive, humidityFive);
                 });
 
         })
@@ -253,3 +179,15 @@ function apiWeatherData(searchedCity) {
 
 
 init();
+
+function weatherForecast(data, digit, date, symbol, temp, wind, humidity) {
+    date.innerHTML = `${new Date((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
+
+    symbol.innerHTML = `<img src=http://openweathermap.org/img/wn/${data.daily[digit].weather[0].icon}@2x.png>`;
+
+    temp.innerHTML = `${data.daily[digit].temp.day} F`;
+
+    wind.innerHTML = `${data.daily[digit].wind_speed} mph`;
+
+    humidity.innerHTML = `${data.daily[digit].humidity} %`;
+}
