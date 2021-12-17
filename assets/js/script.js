@@ -1,5 +1,3 @@
-//Global Variables
-
 let searchBar = document.getElementById('searchBar');
 let searchBtn = document.getElementById('searchBtn');
 let cityContainer = document.querySelector('.one');
@@ -39,8 +37,6 @@ let humidityTwo = document.getElementById('day-two-humidity');
 let humidityThree = document.getElementById('day-three-humidity');
 let humidityFour = document.getElementById('day-four-humidity');
 let humidityFive = document.getElementById('day-five-humidity');
-
-
 
 let searchHistoryPlaceholder = document.getElementById('search-history');
 let historyCities = JSON.parse(localStorage.getItem("Search-History")) || [];
@@ -94,7 +90,7 @@ function renderButton() {
         historyCities.push(searchBar.value);
     }
 
-    
+
     localStorage.setItem("Search-History", JSON.stringify(historyCities));
 }
 }
