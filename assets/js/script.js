@@ -159,9 +159,7 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 1 Forecast
-                    let rawChosenOneDate = data.daily[1].dt;
-                    let trueChosenOneDate = rawChosenOneDate * 1000;
-                    let finalChosenOneDate = new Date(trueChosenOneDate).toLocaleDateString("en-US");
+                    let finalChosenOneDate = new Date((data.daily[1].dt * 1000)).toLocaleDateString("en-US");
                     dateOne.innerHTML = `${finalChosenOneDate}`;
 
                     let chosenOneIcon = data.daily[1].weather[0].icon;
@@ -180,9 +178,7 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 2 Forecast
-                    let rawChosenTwoDate = data.daily[2].dt;
-                    let trueChosenTwoDate = rawChosenTwoDate * 1000;
-                    let finalChosenTwoDate = new Date(trueChosenTwoDate).toLocaleDateString("en-US");
+                    let finalChosenTwoDate = new Date((data.daily[2].dt * 1000)).toLocaleDateString("en-US");
                     dateTwo.innerHTML = `${finalChosenTwoDate}`;
 
                     let chosenTwoIcon = data.daily[2].weather[0].icon;
@@ -201,9 +197,7 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 3 Forecast
-                    let rawChosenThreeDate = data.daily[3].dt;
-                    let trueChosenThreeDate = rawChosenThreeDate * 1000;
-                    let finalChosenThreeDate = new Date(trueChosenThreeDate).toLocaleDateString("en-US");
+                    let finalChosenThreeDate = new Date((data.daily[3].dt * 1000)).toLocaleDateString("en-US");
                     dateThree.innerHTML = `${finalChosenThreeDate}`;
 
                     let chosenThreeIcon = data.daily[3].weather[0].icon;
@@ -222,9 +216,8 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 4 Forecast
-                    let rawChosenFourDate = data.daily[4].dt;
-                    let trueChosenFourDate = rawChosenFourDate * 1000;
-                    let finalChosenFourDate = new Date(trueChosenFourDate).toLocaleDateString("en-US");
+                   
+                    let finalChosenFourDate = new Date((data.daily[4].dt * 1000)).toLocaleDateString("en-US");
                     dateFour.innerHTML = `${finalChosenFourDate}`;
 
                     let chosenFourIcon = data.daily[4].weather[0].icon;
@@ -243,24 +236,15 @@ function apiWeatherData(searchedCity) {
 
 
                     //Day 5 Forecast
-                    let rawChosenFiveDate = data.daily[5].dt;
-                    let trueChosenFiveDate = rawChosenFiveDate * 1000;
-                    let finalChosenFiveDate = new Date(trueChosenFiveDate).toLocaleDateString("en-US");
-                    dateFive.innerHTML = `${finalChosenFiveDate}`;
+                    dateFive.innerHTML = `${new Date((data.daily[5].dt * 1000)).toLocaleDateString("en-US")}`;
 
-                    let chosenFiveIcon = data.daily[5].weather[0].icon;
-                    let chosenFiveIconURL = `http://openweathermap.org/img/wn/${chosenFiveIcon}@2x.png`;
-                    symbolFive.innerHTML = `<img src=${chosenFiveIconURL}>`
-                    console.log(chosenFiveIconURL);
+                    symbolFive.innerHTML = `<img src=http://openweathermap.org/img/wn/${data.daily[5].weather[0].icon}@2x.png>`
 
-                    let chosenFiveTemp = data.daily[5].temp.day;
-                    tempFive.innerHTML = `${chosenFiveTemp} F`;
+                    tempFive.innerHTML = `${data.daily[5].temp.day} F`;
 
-                    let chosenFiveWind = data.daily[5].wind_speed;
-                    windFive.innerHTML = `${chosenFiveWind} mph`;
+                    windFive.innerHTML = `${data.daily[5].wind_speed} mph`;
 
-                    let chosenFiveHumidity = data.daily[5].humidity;
-                    humidityFive.innerHTML = `${chosenFiveHumidity} %`
+                    humidityFive.innerHTML = `${data.daily[5].humidity} %`;
                 });
 
         })
