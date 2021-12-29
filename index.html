@@ -17,7 +17,7 @@
 <body>
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid p-3 mb-2 bg-primary text-white banner">
-        <div class="container ">
+        <div class="container">
             <h1 class="display-1">Weather Dashboard</h1>
             <p class="lead"></p>
         </div>
@@ -25,42 +25,40 @@
 
 
     <!-- Left Column: Search Bar -->
-    <section class="row justify-content-around">
-        <div class="col-lg-3" id="left-side">
+    <section class="row justify-content-sm-center search-bar">
+        <section class="col-lg-3" id="left-side">
             <form>
-                <h2>Search for a City:</h2>
+                <h2 style="margin-left: 0rem;">Search for a City:</h2>
                 <div class="form-group">
                     <input type="text" class="form-control" id="searchBar" aria-describedby="emailHelp"
-                        placeholder="Enter City">
+                        placeholder="Enter City" style="margin-bottom: .3rem;">
                 </div>
                 <button type="submit" class="btn btn-primary w-100" id="searchBtn">Submit</button>
             </form>
 
             <div id="search-history"></div>
-        </div>
+        </section>
 
 
 
-        </ul> <!-- Right Column: Selected City -->
-        <div class="col-lg-8" id="right-side">
-            <div class=row>
-                <div class="card w-100" style="width: 18rem; height: auto;">
-                    <div class="card-body one main">
+        <!-- Right Column: Selected City -->
+        <section class="col-lg-8" id="right-side">
+            <div class="row">
+                <div class="card w-100 main one">
                         <h2 class="card-title" id="city-name"></h2>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text" id="temp"></p>
                         <p class="card-text" id="wind"></p>
                         <p class="card-text" id="humidity"></p>
                         <p class="card-text" id="uv-index"></p>
-                    </div>
                 </div>
             </div>
 
 
             <!-- Right Column: Five Day Forecast-->
             <br/>
-            <div class="row d-flex justify-content-between">
-                <h2>Five Day Forecast:</h2>
+            <h2>Five Day Forecast:</h2>
+            <div class="row d-flex justify-content-evenly five-day-forecast">
                 <!-- Card #1 -->
                 <div class="card text-white bg-primary mb-3 col-12 col-lg-2 card--primary" style="max-width: 18rem;">
                     <div class="card-body">
@@ -121,7 +119,7 @@
 
 
             </div>
-        </div>
+        </section>
 
     </section>
 

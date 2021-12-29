@@ -144,20 +144,20 @@ function apiWeatherData(searchedCity) {
 
 function currentWeather(data, searchedCity) {
     cityName.innerHTML = `${data.name} --- ${new Date((data.dt * 1000)).toLocaleDateString("en-US")} --- <img src=http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png>`;
-    currentTemp.innerHTML = `Temp: ${data.main.temp} F`;
-    currentWind.innerHTML = `Wind: ${data.wind.speed} MPH`;
-    currentHumidity.innerHTML = `Humidity: ${data.main.humidity} %`;
+    currentTemp.textContent = `Temp: ${data.main.temp} F`;
+    currentWind.textContent = `Wind: ${data.wind.speed} MPH`;
+    currentHumidity.textContent = `Humidity: ${data.main.humidity} %`;
     
     localStorage.setItem("Search History", searchedCity);
 }
 
 
 function weatherForecast(data, digit, date, symbol, temp, wind, humidity) {
-    date.innerHTML = `${new Date((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
+    date.textContent = `${new Date((data.daily[digit].dt * 1000)).toLocaleDateString("en-US")}`;
     symbol.innerHTML = `<img src=http://openweathermap.org/img/wn/${data.daily[digit].weather[0].icon}@2x.png>`;
-    temp.innerHTML = `${data.daily[digit].temp.day} F`;
-    wind.innerHTML = `${data.daily[digit].wind_speed} mph`;
-    humidity.innerHTML = `${data.daily[digit].humidity} %`;
+    temp.textContent = `${data.daily[digit].temp.day} F`;
+    wind.textContent = `${data.daily[digit].wind_speed} mph`;
+    humidity.textContent = `${data.daily[digit].humidity} %`;
 }
 
 init();

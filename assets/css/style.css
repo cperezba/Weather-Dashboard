@@ -18,6 +18,7 @@ body {
 h1,
 h2 {
     margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 h1 {
@@ -26,7 +27,9 @@ h1 {
 
 h2 {
     font-size: 2rem; 
+    padding: none;
 }
+
 
 .banner {
     background-image: linear-gradient(darkblue, blue);
@@ -34,14 +37,41 @@ h2 {
 }
 
 
-/* .main {
-    height: 25vh !important;
-} */
+.main {
+    height: 35vh !important;
+    border: none !important;
+}
+
+.main p {
+    margin-left: 1rem;
+}
 
 .card {
-    height: 33vh;
+    height: 31vh;
+
+
 }
 
 .card--primary {
     background-color: darkblue !important;
+}
+
+#city-name {
+    height: 5rem;
+}
+
+
+
+
+/* Searh Bar */
+
+.search-bar h2 {
+    margin-top: 1rem;
+}
+
+
+/* Five Day Forecast */
+
+.five-day-forecast h2 {
+    margin-left: 4rem !important;
 }
