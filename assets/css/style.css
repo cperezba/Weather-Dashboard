@@ -1,26 +1,47 @@
+@import './reset.css';
+
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+} 
+
+/* 
+html {
+    font-size: 62.5%;
+} */
+
 body {
-    height: 100vh;
-    width: 100vw;
-    max-width: 100%;
-    margin: 0px;
-    padding: 0px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#five-day-fore-card {
-    border: 5px solid yellow
+h1,
+h2 {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem !important;
+}
+
+h2 {
+    font-size: 2rem; 
+}
+
+.banner {
+    background-image: linear-gradient(darkblue, blue);
+    text-align: center;
 }
 
 
+/* .main {
+    height: 25vh !important;
+} */
 
-
-
-/* Card */
-
-/* .card {
-    
+.card {
+    height: 33vh;
 }
-
 
 .card--primary {
-    background-color: ;
-} */
+    background-color: darkblue !important;
+}
