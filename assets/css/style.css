@@ -49,6 +49,8 @@ h2 {
 .card {
     height: 31vh;
 
+    height: auto;
+
 
 }
 
@@ -68,6 +70,9 @@ h2 {
 .search-bar h2 {
     margin-top: 1rem;
 }
+
+
+
 
 
 /* Five Day Forecast */
